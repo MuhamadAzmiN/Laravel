@@ -2,4 +2,4 @@
 
 
 
-define('BASEURL', '/aplikasi/coba-laravel/coba-laravel/public');
+define('BASEURL', '/app/coba-laravel/public');

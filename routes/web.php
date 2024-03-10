@@ -22,4 +22,4 @@ Route::get('/about', [PostController::class, 'About'] );
 Route::get('/blog', [PostController::class, 'blog'] );
 // halaman single posts
 
-Route::get('posts/{slug}', [PostController::class, 'slug']);
+Route::get('posts/{post:slug}', [PostController::class, 'slug']);
