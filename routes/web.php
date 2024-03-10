@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -14,39 +15,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', function () {
-    return view('home', ["title" => "Home"]);
-});
+Route::get('/home', [PostController::class, 'Home']);
     
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
-        "name" => "Muhamad Azmi Naziyulloh",
-        "email" => "azmi89017@gmail.com",
-        
-    ]);
-});
+Route::get('/about', [PostController::class, 'About'] );
 
-Route::get('/blog', function () {
-    $blog_post = Post::all();
-    return view('blog', [
-        "title" => "blog",
-        "posts" => $blog_post
-    ]);
-}); 
+Route::get('/blog', [PostController::class, 'blog'] );
 // halaman single posts
 
-Route::get('posts/{slug}', function($slug){
-    $blog_post = Post::all();
-    // $new_post = [];
-    // foreach($blog_post as $post){
-    //     if($post["slug"] === $slug){
-    //         $new_post = $post;
-    //     }
-    // }
-    
-    return view('post', [
-        "title" => "Single Post",
-        "post" => Post::find($slug)
-    ]);
-});
+Route::get('posts/{slug}', [PostController::class, 'slug']);
